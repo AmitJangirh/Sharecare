@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FD58B8C62657C2E800BD9CE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B8C52657C2E800BD9CE3 /* AppDelegate.swift */; };
-		FD58B8C82657C2E800BD9CE3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B8C72657C2E800BD9CE3 /* SceneDelegate.swift */; };
 		FD58B8CA2657C2E800BD9CE3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B8C92657C2E800BD9CE3 /* ViewController.swift */; };
 		FD58B8CD2657C2E800BD9CE3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD58B8CB2657C2E800BD9CE3 /* Main.storyboard */; };
 		FD58B8CF2657C2EA00BD9CE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD58B8CE2657C2EA00BD9CE3 /* Assets.xcassets */; };
 		FD58B8D22657C2EA00BD9CE3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD58B8D02657C2EA00BD9CE3 /* LaunchScreen.storyboard */; };
 		FD58B8DD2657C2EA00BD9CE3 /* SharecareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B8DC2657C2EA00BD9CE3 /* SharecareTests.swift */; };
 		FD58B8E82657C2EB00BD9CE3 /* SharecareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B8E72657C2EB00BD9CE3 /* SharecareUITests.swift */; };
+		FD58B8FB2657C60900BD9CE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B8F92657C60900BD9CE3 /* AppDelegate.swift */; };
+		FD58B8FC2657C60900BD9CE3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B8FA2657C60900BD9CE3 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +36,6 @@
 
 /* Begin PBXFileReference section */
 		FD58B8C22657C2E800BD9CE3 /* Sharecare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sharecare.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FD58B8C52657C2E800BD9CE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FD58B8C72657C2E800BD9CE3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FD58B8C92657C2E800BD9CE3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FD58B8CC2657C2E800BD9CE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FD58B8CE2657C2EA00BD9CE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +47,8 @@
 		FD58B8E32657C2EB00BD9CE3 /* SharecareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharecareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD58B8E72657C2EB00BD9CE3 /* SharecareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharecareUITests.swift; sourceTree = "<group>"; };
 		FD58B8E92657C2EB00BD9CE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD58B8F92657C60900BD9CE3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FD58B8FA2657C60900BD9CE3 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +99,10 @@
 		FD58B8C42657C2E800BD9CE3 /* Sharecare */ = {
 			isa = PBXGroup;
 			children = (
-				FD58B8C52657C2E800BD9CE3 /* AppDelegate.swift */,
-				FD58B8C72657C2E800BD9CE3 /* SceneDelegate.swift */,
+				FD58B8F82657C60900BD9CE3 /* AppDelegate */,
 				FD58B8C92657C2E800BD9CE3 /* ViewController.swift */,
-				FD58B8CB2657C2E800BD9CE3 /* Main.storyboard */,
-				FD58B8CE2657C2EA00BD9CE3 /* Assets.xcassets */,
-				FD58B8D02657C2EA00BD9CE3 /* LaunchScreen.storyboard */,
-				FD58B8D32657C2EA00BD9CE3 /* Info.plist */,
+				FD58B9012657C64800BD9CE3 /* Storyboard */,
+				FD58B9002657C63900BD9CE3 /* Resources */,
 			);
 			path = Sharecare;
 			sourceTree = "<group>";
@@ -126,6 +123,33 @@
 				FD58B8E92657C2EB00BD9CE3 /* Info.plist */,
 			);
 			path = SharecareUITests;
+			sourceTree = "<group>";
+		};
+		FD58B8F82657C60900BD9CE3 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				FD58B8F92657C60900BD9CE3 /* AppDelegate.swift */,
+				FD58B8FA2657C60900BD9CE3 /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		FD58B9002657C63900BD9CE3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FD58B8CE2657C2EA00BD9CE3 /* Assets.xcassets */,
+				FD58B8D32657C2EA00BD9CE3 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FD58B9012657C64800BD9CE3 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				FD58B8CB2657C2E800BD9CE3 /* Main.storyboard */,
+				FD58B8D02657C2EA00BD9CE3 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +282,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD58B8FB2657C60900BD9CE3 /* AppDelegate.swift in Sources */,
 				FD58B8CA2657C2E800BD9CE3 /* ViewController.swift in Sources */,
-				FD58B8C62657C2E800BD9CE3 /* AppDelegate.swift in Sources */,
-				FD58B8C82657C2E800BD9CE3 /* SceneDelegate.swift in Sources */,
+				FD58B8FC2657C60900BD9CE3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,7 +461,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Sharecare/Info.plist;
+				INFOPLIST_FILE = Sharecare/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -455,7 +479,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Sharecare/Info.plist;
+				INFOPLIST_FILE = Sharecare/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
