@@ -1,14 +1,14 @@
 //
-//  ShareCareBusinessTests.swift
-//  ShareCareBusinessTests
+//  EventsTests.swift
+//  EventsTests
 //
 //  Created by Amit Jangirh on 21/05/21.
 //
 
 import XCTest
-@testable import ShareCareBusiness
+@testable import Events
 
-class ShareCareBusinessTests: XCTestCase {
+class EventsTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

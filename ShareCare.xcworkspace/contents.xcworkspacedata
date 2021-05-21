@@ -5,7 +5,7 @@
       location = "group:Sharecare/Sharecare.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Sharecare/../ShareCareBusiness/ShareCareBusiness.xcodeproj">
+      location = "group:Events/Events.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:NetworkConnection/NetworkConnection.xcodeproj">
