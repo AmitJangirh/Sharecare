@@ -22,8 +22,12 @@ public struct NetworkRequest {
         urlRequest = URLRequest(url: url)
     }
     
+    public mutating func setHTTPMethod(method: NetworkMethod) {
+        urlRequest.httpMethod = method.rawValue
+    }
+    
     // Set Body
-    public mutating func body<T: Codable>(_ value: T) throws {
+    public mutating func setBody<T: Codable>(_ value: T) throws {
         do {
             urlRequest.httpBody = try jsonEncoder.encode(value)
         } catch {
@@ -33,7 +37,7 @@ public struct NetworkRequest {
     }
     
     // Set Headers
-    public mutating func headers(_ headers: NetworkHeaders) {
+    public mutating func setHeaders(_ headers: NetworkHeaders) {
         if let headers = headers.headers {
             headers.forEach({ (args) in
                 let (key, value) = args

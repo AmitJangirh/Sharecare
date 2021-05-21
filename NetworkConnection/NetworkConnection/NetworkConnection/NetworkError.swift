@@ -10,7 +10,7 @@ import Foundation
 /*
  NetworkError - Common error which can be handled at the Network layer
  */
-public enum NetworkError {
+public enum NetworkError: Error {
     case invalidRequestURL
     case failedJsonEncode(Error)
     case failedJsonDecode(Error)

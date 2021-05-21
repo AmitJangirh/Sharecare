@@ -3,13 +3,27 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		FD58B9F226580E6500BD9CE3 /* Events.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD58B9E826580E6500BD9CE3 /* Events.framework */; };
-		FD58B9F726580E6500BD9CE3 /* EventsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B9F626580E6500BD9CE3 /* EventsTests.swift */; };
+		FD58B9F726580E6500BD9CE3 /* EventsInterfaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B9F626580E6500BD9CE3 /* EventsInterfaceTests.swift */; };
 		FD58B9F926580E6500BD9CE3 /* Events.h in Headers */ = {isa = PBXBuildFile; fileRef = FD58B9EB26580E6500BD9CE3 /* Events.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD58BA0726580EBF00BD9CE3 /* EventsInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58BA0626580EBF00BD9CE3 /* EventsInterface.swift */; };
+		FD58BA0B26580F1200BD9CE3 /* EventsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58BA0A26580F1200BD9CE3 /* EventsError.swift */; };
+		FD58BA2C265811D500BD9CE3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58BA2B265811D500BD9CE3 /* Event.swift */; };
+		FD58BA302658131800BD9CE3 /* EventsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58BA2F2658131800BD9CE3 /* EventsConfiguration.swift */; };
+		FD58BA3A2658138700BD9CE3 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58BA392658138700BD9CE3 /* EventService.swift */; };
+		FD58BA3F265815EE00BD9CE3 /* NetworkConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD58BA3E265815EE00BD9CE3 /* NetworkConnection.framework */; platformFilter = ios; };
+		FD58BA4626581B6E00BD9CE3 /* EventNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58BA4526581B6E00BD9CE3 /* EventNetwork.swift */; };
+		FD58BA4A2658283C00BD9CE3 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58BA492658283C00BD9CE3 /* AccessToken.swift */; };
+		FD58BA5426582EB600BD9CE3 /* TokenRefresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58BA5326582EB600BD9CE3 /* TokenRefresher.swift */; };
+		FD58BA582658349C00BD9CE3 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58BA572658349C00BD9CE3 /* TokenManager.swift */; };
+		FD68D2D02658EC5100C19BB2 /* MockNetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD68D2CF2658EC5100C19BB2 /* MockNetworkAdapter.swift */; };
+		FD68D2D72658F55000C19BB2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD68D2D62658F55000C19BB2 /* Utilities.swift */; };
+		FD8BA1132658CD9D00C51685 /* EventsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8BA1122658CD9D00C51685 /* EventsInteractor.swift */; };
+		FD8BA1192658D52A00C51685 /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8BA1182658D52A00C51685 /* NetworkAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +41,22 @@
 		FD58B9EB26580E6500BD9CE3 /* Events.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Events.h; sourceTree = "<group>"; };
 		FD58B9EC26580E6500BD9CE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD58B9F126580E6500BD9CE3 /* EventsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FD58B9F626580E6500BD9CE3 /* EventsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTests.swift; sourceTree = "<group>"; };
+		FD58B9F626580E6500BD9CE3 /* EventsInterfaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsInterfaceTests.swift; sourceTree = "<group>"; };
 		FD58B9F826580E6500BD9CE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD58BA0626580EBF00BD9CE3 /* EventsInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsInterface.swift; sourceTree = "<group>"; };
+		FD58BA0A26580F1200BD9CE3 /* EventsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsError.swift; sourceTree = "<group>"; };
+		FD58BA2B265811D500BD9CE3 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		FD58BA2F2658131800BD9CE3 /* EventsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsConfiguration.swift; sourceTree = "<group>"; };
+		FD58BA392658138700BD9CE3 /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
+		FD58BA3E265815EE00BD9CE3 /* NetworkConnection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkConnection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD58BA4526581B6E00BD9CE3 /* EventNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNetwork.swift; sourceTree = "<group>"; };
+		FD58BA492658283C00BD9CE3 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
+		FD58BA5326582EB600BD9CE3 /* TokenRefresher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefresher.swift; sourceTree = "<group>"; };
+		FD58BA572658349C00BD9CE3 /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
+		FD68D2CF2658EC5100C19BB2 /* MockNetworkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkAdapter.swift; sourceTree = "<group>"; };
+		FD68D2D62658F55000C19BB2 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		FD8BA1122658CD9D00C51685 /* EventsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsInteractor.swift; sourceTree = "<group>"; };
+		FD8BA1182658D52A00C51685 /* NetworkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD58BA3F265815EE00BD9CE3 /* NetworkConnection.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +85,7 @@
 				FD58B9EA26580E6500BD9CE3 /* Events */,
 				FD58B9F526580E6500BD9CE3 /* EventsTests */,
 				FD58B9E926580E6500BD9CE3 /* Products */,
+				FD58BA3D265815EE00BD9CE3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,6 +102,15 @@
 			isa = PBXGroup;
 			children = (
 				FD58B9EB26580E6500BD9CE3 /* Events.h */,
+				FD58BA0626580EBF00BD9CE3 /* EventsInterface.swift */,
+				FD8BA1122658CD9D00C51685 /* EventsInteractor.swift */,
+				FD58BA572658349C00BD9CE3 /* TokenManager.swift */,
+				FD58BA5326582EB600BD9CE3 /* TokenRefresher.swift */,
+				FD58BA2F2658131800BD9CE3 /* EventsConfiguration.swift */,
+				FD58BA392658138700BD9CE3 /* EventService.swift */,
+				FD58BA4526581B6E00BD9CE3 /* EventNetwork.swift */,
+				FD58BA332658135300BD9CE3 /* Models */,
+				FD58BA362658136500BD9CE3 /* Network */,
 				FD58B9EC26580E6500BD9CE3 /* Info.plist */,
 			);
 			path = Events;
@@ -80,10 +119,38 @@
 		FD58B9F526580E6500BD9CE3 /* EventsTests */ = {
 			isa = PBXGroup;
 			children = (
-				FD58B9F626580E6500BD9CE3 /* EventsTests.swift */,
+				FD58B9F626580E6500BD9CE3 /* EventsInterfaceTests.swift */,
+				FD68D2CF2658EC5100C19BB2 /* MockNetworkAdapter.swift */,
+				FD68D2D62658F55000C19BB2 /* Utilities.swift */,
 				FD58B9F826580E6500BD9CE3 /* Info.plist */,
 			);
 			path = EventsTests;
+			sourceTree = "<group>";
+		};
+		FD58BA332658135300BD9CE3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FD58BA492658283C00BD9CE3 /* AccessToken.swift */,
+				FD58BA2B265811D500BD9CE3 /* Event.swift */,
+				FD58BA0A26580F1200BD9CE3 /* EventsError.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FD58BA362658136500BD9CE3 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FD8BA1182658D52A00C51685 /* NetworkAdapter.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		FD58BA3D265815EE00BD9CE3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FD58BA3E265815EE00BD9CE3 /* NetworkConnection.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +214,7 @@
 				TargetAttributes = {
 					FD58B9E726580E6500BD9CE3 = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 					FD58B9F026580E6500BD9CE3 = {
 						CreatedOnToolsVersion = 12.4;
@@ -194,6 +262,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD58BA4A2658283C00BD9CE3 /* AccessToken.swift in Sources */,
+				FD58BA0726580EBF00BD9CE3 /* EventsInterface.swift in Sources */,
+				FD58BA302658131800BD9CE3 /* EventsConfiguration.swift in Sources */,
+				FD8BA1132658CD9D00C51685 /* EventsInteractor.swift in Sources */,
+				FD58BA2C265811D500BD9CE3 /* Event.swift in Sources */,
+				FD8BA1192658D52A00C51685 /* NetworkAdapter.swift in Sources */,
+				FD58BA3A2658138700BD9CE3 /* EventService.swift in Sources */,
+				FD58BA5426582EB600BD9CE3 /* TokenRefresher.swift in Sources */,
+				FD58BA582658349C00BD9CE3 /* TokenManager.swift in Sources */,
+				FD58BA0B26580F1200BD9CE3 /* EventsError.swift in Sources */,
+				FD58BA4626581B6E00BD9CE3 /* EventNetwork.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +280,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD58B9F726580E6500BD9CE3 /* EventsTests.swift in Sources */,
+				FD68D2D72658F55000C19BB2 /* Utilities.swift in Sources */,
+				FD58B9F726580E6500BD9CE3 /* EventsInterfaceTests.swift in Sources */,
+				FD68D2D02658EC5100C19BB2 /* MockNetworkAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +422,7 @@
 		FD58B9FD26580E6500BD9CE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -356,6 +438,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Sharecare.Events;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -364,6 +447,7 @@
 		FD58B9FE26580E6500BD9CE3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -387,6 +471,7 @@
 		FD58BA0026580E6500BD9CE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = EventsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -404,6 +489,7 @@
 		FD58BA0126580E6500BD9CE3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = EventsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

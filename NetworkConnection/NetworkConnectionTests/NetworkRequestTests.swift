@@ -27,8 +27,8 @@ class NetworkRequestTests: XCTestCase {
     
     func test_networkRequest_creation_with_pathBodyHeaders() throws {
         var request = NetworkRequest(path: networkPath)
-        try? request?.body(body)
-        request?.headers(headers)
+        try? request?.setBody(body)
+        request?.setHeaders(headers)
         XCTAssertEqual(request?.urlRequest.allHTTPHeaderFields?.count, 2)
         XCTAssertNotNil(request?.urlRequest.httpBody)
         XCTAssertEqual(request?.urlRequest.url?.absoluteString, "http://networkPathTest.com/service/submethod?id=1&name=testName")

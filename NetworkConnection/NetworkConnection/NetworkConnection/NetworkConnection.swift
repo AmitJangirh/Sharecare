@@ -34,6 +34,20 @@ public class NetworkConnection {
     ///   - path: NetworkPath, to be set the URL to URLRequest
     ///   - method: HTTP method type
     ///   - headers: HTTP headers values to be set to URLRequest
+    ///   - completion: Completion response from API, with Response decodable Object Type, and Network Error
+    public func sendConnection<T: Codable>(path: NetworkPath,
+                                           method: NetworkMethod,
+                                           headers: NetworkHeaders,
+                                           completion: @escaping (T?, URLResponse?, NetworkError? ) -> Void) {
+        sendConnection(path: path, method: method, headers: headers, body: Optional<String>.none, completion: completion)
+    }
+    
+    // MARK: - Sending function
+    /// Use it to send API request with given paramaters
+    /// - Parameters:
+    ///   - path: NetworkPath, to be set the URL to URLRequest
+    ///   - method: HTTP method type
+    ///   - headers: HTTP headers values to be set to URLRequest
     ///   - body: HTTP Body to be set to URLRequest, it is object which should adapt to Codable. Coding handled by function
     ///   - completion: Completion response from API, with Response decodable Object Type, and Network Error
     public func sendConnection<T: Codable, U: Codable>(path: NetworkPath,
@@ -48,7 +62,7 @@ public class NetworkConnection {
         // Set Body
         do {
             if let value = body {
-                try urlRequest.body(value)
+                try urlRequest.setBody(value)
             }
         } catch {
             completion(nil, nil, .failedJsonEncode(error))
@@ -56,7 +70,10 @@ public class NetworkConnection {
         }
         
         // Set Headers
-        urlRequest.headers(headers)
+        urlRequest.setHeaders(headers)
+        
+        // set method
+        urlRequest.setHTTPMethod(method: method)
         
         //Send call
         sendConnection(request: urlRequest, completion: completion)

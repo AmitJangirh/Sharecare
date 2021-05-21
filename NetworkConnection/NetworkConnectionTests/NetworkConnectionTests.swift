@@ -25,8 +25,8 @@ class NetworkConnectionTests: XCTestCase {
     }
     var request: NetworkRequest? {
         var request = NetworkRequest(path: networkPath)
-        try? request?.body(body)
-        request?.headers(headers)
+        try? request?.setBody(body)
+        request?.setHeaders(headers)
         return request
     }
     
