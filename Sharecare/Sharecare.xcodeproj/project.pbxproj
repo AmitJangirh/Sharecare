@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FD58B8CA2657C2E800BD9CE3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B8C92657C2E800BD9CE3 /* ViewController.swift */; };
 		FD58B8CD2657C2E800BD9CE3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD58B8CB2657C2E800BD9CE3 /* Main.storyboard */; };
 		FD58B8CF2657C2EA00BD9CE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD58B8CE2657C2EA00BD9CE3 /* Assets.xcassets */; };
 		FD58B8D22657C2EA00BD9CE3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD58B8D02657C2EA00BD9CE3 /* LaunchScreen.storyboard */; };
@@ -15,6 +14,8 @@
 		FD58B8E82657C2EB00BD9CE3 /* SharecareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B8E72657C2EB00BD9CE3 /* SharecareUITests.swift */; };
 		FD58B8FB2657C60900BD9CE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B8F92657C60900BD9CE3 /* AppDelegate.swift */; };
 		FD58B8FC2657C60900BD9CE3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B8FA2657C60900BD9CE3 /* SceneDelegate.swift */; };
+		FD58B9092657C81700BD9CE3 /* EventSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B9082657C81700BD9CE3 /* EventSearchViewController.swift */; };
+		FD58B9202657C8EB00BD9CE3 /* EventSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B91F2657C8EB00BD9CE3 /* EventSearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,11 +33,24 @@
 			remoteGlobalIDString = FD58B8C12657C2E800BD9CE3;
 			remoteInfo = Sharecare;
 		};
+		FD58B95C2657CBDF00BD9CE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD58B9572657CBDF00BD9CE3 /* ShareCareBusiness.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FD58B9382657CBA700BD9CE3;
+			remoteInfo = ShareCareBusiness;
+		};
+		FD58B95E2657CBDF00BD9CE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD58B9572657CBDF00BD9CE3 /* ShareCareBusiness.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FD58B9412657CBA700BD9CE3;
+			remoteInfo = ShareCareBusinessTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		FD58B8C22657C2E800BD9CE3 /* Sharecare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sharecare.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FD58B8C92657C2E800BD9CE3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FD58B8CC2657C2E800BD9CE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FD58B8CE2657C2EA00BD9CE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD58B8D12657C2EA00BD9CE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +63,9 @@
 		FD58B8E92657C2EB00BD9CE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD58B8F92657C60900BD9CE3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD58B8FA2657C60900BD9CE3 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FD58B9082657C81700BD9CE3 /* EventSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSearchViewController.swift; sourceTree = "<group>"; };
+		FD58B91F2657C8EB00BD9CE3 /* EventSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSearchViewModel.swift; sourceTree = "<group>"; };
+		FD58B9572657CBDF00BD9CE3 /* ShareCareBusiness.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShareCareBusiness.xcodeproj; path = ../ShareCareBusiness/ShareCareBusiness.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +96,7 @@
 		FD58B8B92657C2E800BD9CE3 = {
 			isa = PBXGroup;
 			children = (
+				FD58B9572657CBDF00BD9CE3 /* ShareCareBusiness.xcodeproj */,
 				FD58B8C42657C2E800BD9CE3 /* Sharecare */,
 				FD58B8DB2657C2EA00BD9CE3 /* SharecareTests */,
 				FD58B8E62657C2EB00BD9CE3 /* SharecareUITests */,
@@ -100,7 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				FD58B8F82657C60900BD9CE3 /* AppDelegate */,
-				FD58B8C92657C2E800BD9CE3 /* ViewController.swift */,
+				FD58B91B2657C8A800BD9CE3 /* Events */,
 				FD58B9012657C64800BD9CE3 /* Storyboard */,
 				FD58B9002657C63900BD9CE3 /* Resources */,
 			);
@@ -150,6 +168,48 @@
 				FD58B8D02657C2EA00BD9CE3 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		FD58B90D2657C82600BD9CE3 /* EventSearch */ = {
+			isa = PBXGroup;
+			children = (
+				FD58B9112657C83800BD9CE3 /* ViewController */,
+				FD58B9242657C8F200BD9CE3 /* ViewModel */,
+			);
+			path = EventSearch;
+			sourceTree = "<group>";
+		};
+		FD58B9112657C83800BD9CE3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FD58B9082657C81700BD9CE3 /* EventSearchViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FD58B91B2657C8A800BD9CE3 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				FD58B90D2657C82600BD9CE3 /* EventSearch */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		FD58B9242657C8F200BD9CE3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FD58B91F2657C8EB00BD9CE3 /* EventSearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FD58B9582657CBDF00BD9CE3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD58B95D2657CBDF00BD9CE3 /* ShareCareBusiness.framework */,
+				FD58B95F2657CBDF00BD9CE3 /* ShareCareBusinessTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +301,12 @@
 			mainGroup = FD58B8B92657C2E800BD9CE3;
 			productRefGroup = FD58B8C32657C2E800BD9CE3 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FD58B9582657CBDF00BD9CE3 /* Products */;
+					ProjectRef = FD58B9572657CBDF00BD9CE3 /* ShareCareBusiness.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				FD58B8C12657C2E800BD9CE3 /* Sharecare */,
@@ -249,6 +315,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FD58B95D2657CBDF00BD9CE3 /* ShareCareBusiness.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ShareCareBusiness.framework;
+			remoteRef = FD58B95C2657CBDF00BD9CE3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FD58B95F2657CBDF00BD9CE3 /* ShareCareBusinessTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ShareCareBusinessTests.xctest;
+			remoteRef = FD58B95E2657CBDF00BD9CE3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FD58B8C02657C2E800BD9CE3 /* Resources */ = {
@@ -283,7 +366,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD58B8FB2657C60900BD9CE3 /* AppDelegate.swift in Sources */,
-				FD58B8CA2657C2E800BD9CE3 /* ViewController.swift in Sources */,
+				FD58B9202657C8EB00BD9CE3 /* EventSearchViewModel.swift in Sources */,
+				FD58B9092657C81700BD9CE3 /* EventSearchViewController.swift in Sources */,
 				FD58B8FC2657C60900BD9CE3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
