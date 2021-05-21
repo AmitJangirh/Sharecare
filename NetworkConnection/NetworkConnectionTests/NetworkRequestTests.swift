@@ -1,14 +1,15 @@
 //
-//  NetworkConnectionTests.swift
+//  NetworkRequestTests.swift
 //  NetworkConnectionTests
 //
 //  Created by Amit Jangirh on 21/05/21.
 //
 
-import XCTest
+import Foundation
 @testable import NetworkConnection
+import XCTest
 
-class NetworkConnectionTests: XCTestCase {
+class NetworkRequestTests: XCTestCase {
     let domain = "http://networkPathTest.com"
     let service = "service/submethod"
     let parameters: [String: String] = ["id": "1", "name": "testName"]
@@ -23,22 +24,20 @@ class NetworkConnectionTests: XCTestCase {
     var headers: NetworkHeaders {
         NetworkHeaders(headers: headerValue)
     }
-    var request: NetworkRequest? {
+    
+    func test_networkRequest_creation_with_pathBodyHeaders() throws {
         var request = NetworkRequest(path: networkPath)
         try? request?.body(body)
         request?.headers(headers)
-        return request
-    }
-    
-    func test_networkConnection_sendRequest() throws {
-        let expectation = XCTestExpectation(description: "Wait for API Call")
-        NetworkConnection.shared.sendConnection(request: request!) { (responseObject: MockResponse?, response, error) in
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 3.0)
+        XCTAssertEqual(request?.urlRequest.allHTTPHeaderFields?.count, 2)
+        XCTAssertNotNil(request?.urlRequest.httpBody)
+        XCTAssertEqual(request?.urlRequest.url?.absoluteString, "http://networkPathTest.com/service/submethod?id=1&name=testName")
     }
 }
 
-struct MockResponse: Codable {
-    var int: Int = 1
+struct MockRequestBody: Codable {
+    var stringValue: String = "Sample"
+    var intValue: Int = 22
+    var floatValue: Float = 22.3
 }
+ 

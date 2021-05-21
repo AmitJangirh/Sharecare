@@ -10,6 +10,17 @@
 		FD58B9792657CCF300BD9CE3 /* NetworkConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD58B96F2657CCF300BD9CE3 /* NetworkConnection.framework */; };
 		FD58B97E2657CCF300BD9CE3 /* NetworkConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B97D2657CCF300BD9CE3 /* NetworkConnectionTests.swift */; };
 		FD58B9802657CCF300BD9CE3 /* NetworkConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = FD58B9722657CCF300BD9CE3 /* NetworkConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD58B98F2657CDF800BD9CE3 /* NetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B98E2657CDF800BD9CE3 /* NetworkConnection.swift */; };
+		FD58B9962657CEAA00BD9CE3 /* NetworkPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B9952657CEAA00BD9CE3 /* NetworkPath.swift */; };
+		FD58B99A2657CEB700BD9CE3 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B9992657CEB700BD9CE3 /* NetworkRequest.swift */; };
+		FD58B99E2657CECB00BD9CE3 /* NetworkHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B99D2657CECB00BD9CE3 /* NetworkHeaders.swift */; };
+		FD58B9A22657CEE900BD9CE3 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B9A12657CEE900BD9CE3 /* NetworkError.swift */; };
+		FD58B9A62657D18600BD9CE3 /* NetworkMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B9A52657D18600BD9CE3 /* NetworkMethod.swift */; };
+		FD58B9AC2657D65300BD9CE3 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B9AB2657D65300BD9CE3 /* NetworkLogger.swift */; };
+		FD58B9B62657D6FC00BD9CE3 /* NetworkPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B9B52657D6FC00BD9CE3 /* NetworkPathTests.swift */; };
+		FD58B9BA2657DE9900BD9CE3 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B9B92657DE9900BD9CE3 /* NetworkSession.swift */; };
+		FD58B9C02657EB5100BD9CE3 /* NetworkHeadersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B9BF2657EB5100BD9CE3 /* NetworkHeadersTests.swift */; };
+		FD58B9C62657FA1A00BD9CE3 /* NetworkRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58B9C52657FA1A00BD9CE3 /* NetworkRequestTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +40,17 @@
 		FD58B9782657CCF300BD9CE3 /* NetworkConnectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkConnectionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD58B97D2657CCF300BD9CE3 /* NetworkConnectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnectionTests.swift; sourceTree = "<group>"; };
 		FD58B97F2657CCF300BD9CE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD58B98E2657CDF800BD9CE3 /* NetworkConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
+		FD58B9952657CEAA00BD9CE3 /* NetworkPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPath.swift; sourceTree = "<group>"; };
+		FD58B9992657CEB700BD9CE3 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		FD58B99D2657CECB00BD9CE3 /* NetworkHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHeaders.swift; sourceTree = "<group>"; };
+		FD58B9A12657CEE900BD9CE3 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		FD58B9A52657D18600BD9CE3 /* NetworkMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMethod.swift; sourceTree = "<group>"; };
+		FD58B9AB2657D65300BD9CE3 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
+		FD58B9B52657D6FC00BD9CE3 /* NetworkPathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPathTests.swift; sourceTree = "<group>"; };
+		FD58B9B92657DE9900BD9CE3 /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
+		FD58B9BF2657EB5100BD9CE3 /* NetworkHeadersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHeadersTests.swift; sourceTree = "<group>"; };
+		FD58B9C52657FA1A00BD9CE3 /* NetworkRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				FD58B9722657CCF300BD9CE3 /* NetworkConnection.h */,
+				FD58B9922657CDFC00BD9CE3 /* NetworkConnection */,
 				FD58B9732657CCF300BD9CE3 /* Info.plist */,
 			);
 			path = NetworkConnection;
@@ -80,10 +103,28 @@
 		FD58B97C2657CCF300BD9CE3 /* NetworkConnectionTests */ = {
 			isa = PBXGroup;
 			children = (
-				FD58B97D2657CCF300BD9CE3 /* NetworkConnectionTests.swift */,
 				FD58B97F2657CCF300BD9CE3 /* Info.plist */,
+				FD58B97D2657CCF300BD9CE3 /* NetworkConnectionTests.swift */,
+				FD58B9BF2657EB5100BD9CE3 /* NetworkHeadersTests.swift */,
+				FD58B9B52657D6FC00BD9CE3 /* NetworkPathTests.swift */,
+				FD58B9C52657FA1A00BD9CE3 /* NetworkRequestTests.swift */,
 			);
 			path = NetworkConnectionTests;
+			sourceTree = "<group>";
+		};
+		FD58B9922657CDFC00BD9CE3 /* NetworkConnection */ = {
+			isa = PBXGroup;
+			children = (
+				FD58B98E2657CDF800BD9CE3 /* NetworkConnection.swift */,
+				FD58B9A12657CEE900BD9CE3 /* NetworkError.swift */,
+				FD58B99D2657CECB00BD9CE3 /* NetworkHeaders.swift */,
+				FD58B9AB2657D65300BD9CE3 /* NetworkLogger.swift */,
+				FD58B9A52657D18600BD9CE3 /* NetworkMethod.swift */,
+				FD58B9952657CEAA00BD9CE3 /* NetworkPath.swift */,
+				FD58B9992657CEB700BD9CE3 /* NetworkRequest.swift */,
+				FD58B9B92657DE9900BD9CE3 /* NetworkSession.swift */,
+			);
+			path = NetworkConnection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +188,7 @@
 				TargetAttributes = {
 					FD58B96E2657CCF300BD9CE3 = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 					FD58B9772657CCF300BD9CE3 = {
 						CreatedOnToolsVersion = 12.4;
@@ -194,6 +236,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD58B9AC2657D65300BD9CE3 /* NetworkLogger.swift in Sources */,
+				FD58B98F2657CDF800BD9CE3 /* NetworkConnection.swift in Sources */,
+				FD58B9A62657D18600BD9CE3 /* NetworkMethod.swift in Sources */,
+				FD58B99E2657CECB00BD9CE3 /* NetworkHeaders.swift in Sources */,
+				FD58B99A2657CEB700BD9CE3 /* NetworkRequest.swift in Sources */,
+				FD58B9BA2657DE9900BD9CE3 /* NetworkSession.swift in Sources */,
+				FD58B9962657CEAA00BD9CE3 /* NetworkPath.swift in Sources */,
+				FD58B9A22657CEE900BD9CE3 /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +252,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD58B97E2657CCF300BD9CE3 /* NetworkConnectionTests.swift in Sources */,
+				FD58B9B62657D6FC00BD9CE3 /* NetworkPathTests.swift in Sources */,
+				FD58B9C62657FA1A00BD9CE3 /* NetworkRequestTests.swift in Sources */,
+				FD58B9C02657EB5100BD9CE3 /* NetworkHeadersTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +394,7 @@
 		FD58B9842657CCF300BD9CE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -356,6 +410,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Sharecare.NetworkConnection;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -364,6 +419,7 @@
 		FD58B9852657CCF300BD9CE3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -387,6 +443,7 @@
 		FD58B9872657CCF300BD9CE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = NetworkConnectionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -404,6 +461,7 @@
 		FD58B9882657CCF300BD9CE3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = NetworkConnectionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
