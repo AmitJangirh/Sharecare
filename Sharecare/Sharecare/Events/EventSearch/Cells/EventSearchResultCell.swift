@@ -14,7 +14,11 @@ struct EventSearchResult {
 
 class EventSearchResultCell: UITableViewCell, TableCellAdaptable {
     // MARK: - IBOutlets
-    @IBOutlet private var name: UILabel!
+    @IBOutlet private var name: UILabel! {
+        didSet {
+            name.textColor = Theme.Color.greyColor
+        }
+    }
     
     // MARK: - DataType
     typealias CellData = EventSearchResult

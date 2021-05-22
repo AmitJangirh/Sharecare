@@ -13,10 +13,20 @@ class EventSearchViewModel {
     // MARK: - UIComponent
     struct Constant {
         static let rowHeight: CGFloat = 20
+        static let SearchTitle = "Search Event"
     }
     
     // MARK: - UIComponent
-    weak var viewController: UIViewController?
+    weak var viewController: UIViewController? {
+        didSet {
+            guard let viewController = self.viewController else {
+                return
+            }
+            viewController.title = Constant.SearchTitle
+            viewController.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Theme.Color.tintColor]
+            viewController.navigationController?.navigationBar.barTintColor = Theme.Color.greyColor
+        }
+    }
     weak var tableView: UITableView? {
         didSet {
             guard let tableView = self.tableView else {
@@ -25,6 +35,7 @@ class EventSearchViewModel {
             tableView.allowsMultipleSelection = false
             tableView.estimatedRowHeight = Constant.rowHeight
             tableView.rowHeight = Constant.rowHeight
+            tableView.tableFooterView = UIView()
             EventSearchResultCell.register(for: tableView)
         }
     }
@@ -33,11 +44,17 @@ class EventSearchViewModel {
             guard let searchBar = self.searchBar else {
                 return
             }
-            searchBar.showsCancelButton = true
+            searchBar.barTintColor = Theme.Color.greyColor
+            searchBar.tintColor = Theme.Color.tintColor
             let searchTextField = searchBar.searchTextField
-            searchTextField.textColor = UIColor.white
-            searchTextField.clearButtonMode = .never
-            searchTextField.backgroundColor = UIColor.black
+            searchTextField.textColor = Theme.Color.greyColor
+            searchTextField.tintColor = Theme.Color.greyColor
+            searchTextField.clearButtonMode = .always
+            searchTextField.backgroundColor = Theme.Color.tintColor
+            if let glassIconView = searchTextField.leftView as? UIImageView {
+                glassIconView.image = glassIconView.image?.withRenderingMode(.alwaysTemplate)
+                glassIconView.tintColor = Theme.Color.greyColor
+            }
         }
     }
     // MARK: - Vars

@@ -54,18 +54,18 @@ extension EventSearchViewController: UITableViewDataSource, UITableViewDelegate 
         cell.configure(with: result)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }
 
 extension EventSearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard searchText.count > 2 else {
+            viewModel.searchEvents = []
             return
         }
         search(text: searchText)
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = nil
-        tableView.reloadData()
     }
 }
