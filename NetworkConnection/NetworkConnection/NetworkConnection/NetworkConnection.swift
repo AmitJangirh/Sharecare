@@ -93,7 +93,7 @@ public class NetworkConnection {
             }
             do {
                 let value = try self.jsonDecoder.decode(T.self, from: responseData)
-                completion(value, response, .error(error))
+                completion(value, response, nil)
             } catch {
                 let err = NetworkError.failedJsonDecode(error)
                 completion(nil, response, err)

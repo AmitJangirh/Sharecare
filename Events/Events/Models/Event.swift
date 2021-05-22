@@ -12,7 +12,7 @@ public struct Event: Codable {
     enum CodingKeys: String, CodingKey {
         case id, title,  participants
         case createdAt = "created-at"
-        case total = "ttl"
+        case timeToLive = "ttl"
     }
     
     /// Unique event ID for identification
@@ -25,7 +25,7 @@ public struct Event: Codable {
     public private(set) var createdAt: Int?
     
     /// A time to live that indiciates for how long one can still join the event (speficied in seconds from the point in time since the request hits the service)
-    public private(set) var total: Int?
+    public private(set) var timeToLive: Int?
     
     /// Number of participants in the event
     public private(set) var participants: Int?

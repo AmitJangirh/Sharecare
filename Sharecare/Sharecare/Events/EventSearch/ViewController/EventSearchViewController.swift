@@ -9,8 +9,63 @@ import Foundation
 import UIKit
 
 class EventSearchViewController: UIViewController {
+    // MARK: - IBOutlets
+    @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var searchBar: UISearchBar!
     
+    // MARK: - Vars
+    let viewModel = EventSearchViewModel()
+
+    // MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+    }
+    
+    private func setup() {
+        viewModel.viewController = self
+        viewModel.tableView = self.tableView
+        viewModel.searchBar = self.searchBar
+    }
+    
+    // MARK: - Searching
+    private func search(text: String) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.viewModel.search(string: text)
+        }
+    }
+}
+
+extension EventSearchViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        viewModel.sections()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.rows(at: section)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellData = viewModel[indexPath]
+        guard let cell = EventSearchResultCell.dequeueCell(for: tableView, indexPath: indexPath) else {
+            return UITableViewCell()
+        }
+        let result = EventSearchResult(eventName: cellData.title ?? "")
+        cell.configure(with: result)
+        return cell
+    }
+}
+
+extension EventSearchViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard searchText.count > 2 else {
+            return
+        }
+        search(text: searchText)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        tableView.reloadData()
     }
 }

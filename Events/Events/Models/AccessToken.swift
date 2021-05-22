@@ -30,8 +30,8 @@ extension AccessToken {
             return false
         }
         guard let lastStoredDate = self.storeDate else {
-            // If no store date then, we need to fetch it
-            return false
+            // If no store date then, we are fetching first time, then save it
+            return true
         }
         if lastStoredDate.seconds(from: Date()) > expire {
             // If Store date exeeds the expire time

@@ -13,7 +13,7 @@ protocol TokenRefreshable {
 
 struct TokenRefresher: TokenRefreshable {
     static func refreshToken(completion: @escaping (Result<String, EventsError>) -> Void) {
-        if let existingToken = TokenManager().accessToken, existingToken.isValidToken {
+        if let existingToken = DataStore.accessToken, existingToken.isValidToken {
             completion(.success(existingToken.accessToken!))
             return
         }
@@ -21,6 +21,7 @@ struct TokenRefresher: TokenRefreshable {
             switch result {
             case .success(let accessToken):
                 if accessToken.isValidToken {
+                    DataStore.accessToken = accessToken
                     completion(.success(accessToken.accessToken!))
                 } else {
                     completion(.failure(.invalidAccessToken))

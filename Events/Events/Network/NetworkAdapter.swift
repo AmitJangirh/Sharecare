@@ -43,7 +43,7 @@ struct NetworkAdapter: NetworkAdaptable {
             }
             
             // Handle HTTP response for status valid code
-            let statusCode = urlResponse?.statusCode ?? 0
+            let statusCode = urlResponse?.code ?? 0
             guard statusCode.isValidReponse else {
                 completion(.failure(EventsError.invalidStatusCode(statusCode)))
                 return
@@ -85,7 +85,7 @@ extension NetworkHeaders {
 }
 
 extension URLResponse {
-    fileprivate var statusCode: Int? {
+    fileprivate var code: Int? {
         if let httpResponse = (self as? HTTPURLResponse) {
             return httpResponse.statusCode
         }

@@ -19,9 +19,10 @@
 		FD58BA4626581B6E00BD9CE3 /* EventNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58BA4526581B6E00BD9CE3 /* EventNetwork.swift */; };
 		FD58BA4A2658283C00BD9CE3 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58BA492658283C00BD9CE3 /* AccessToken.swift */; };
 		FD58BA5426582EB600BD9CE3 /* TokenRefresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58BA5326582EB600BD9CE3 /* TokenRefresher.swift */; };
-		FD58BA582658349C00BD9CE3 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58BA572658349C00BD9CE3 /* TokenManager.swift */; };
+		FD58BA582658349C00BD9CE3 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58BA572658349C00BD9CE3 /* DataStore.swift */; };
 		FD68D2D02658EC5100C19BB2 /* MockNetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD68D2CF2658EC5100C19BB2 /* MockNetworkAdapter.swift */; };
 		FD68D2D72658F55000C19BB2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD68D2D62658F55000C19BB2 /* Utilities.swift */; };
+		FD7C16CA2659340900A6BE0D /* EventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7C16C92659340900A6BE0D /* EventLogger.swift */; };
 		FD8BA1132658CD9D00C51685 /* EventsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8BA1122658CD9D00C51685 /* EventsInteractor.swift */; };
 		FD8BA1192658D52A00C51685 /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8BA1182658D52A00C51685 /* NetworkAdapter.swift */; };
 /* End PBXBuildFile section */
@@ -52,9 +53,10 @@
 		FD58BA4526581B6E00BD9CE3 /* EventNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNetwork.swift; sourceTree = "<group>"; };
 		FD58BA492658283C00BD9CE3 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		FD58BA5326582EB600BD9CE3 /* TokenRefresher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefresher.swift; sourceTree = "<group>"; };
-		FD58BA572658349C00BD9CE3 /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
+		FD58BA572658349C00BD9CE3 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		FD68D2CF2658EC5100C19BB2 /* MockNetworkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkAdapter.swift; sourceTree = "<group>"; };
 		FD68D2D62658F55000C19BB2 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		FD7C16C92659340900A6BE0D /* EventLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLogger.swift; sourceTree = "<group>"; };
 		FD8BA1122658CD9D00C51685 /* EventsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsInteractor.swift; sourceTree = "<group>"; };
 		FD8BA1182658D52A00C51685 /* NetworkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,11 +106,12 @@
 				FD58B9EB26580E6500BD9CE3 /* Events.h */,
 				FD58BA0626580EBF00BD9CE3 /* EventsInterface.swift */,
 				FD8BA1122658CD9D00C51685 /* EventsInteractor.swift */,
-				FD58BA572658349C00BD9CE3 /* TokenManager.swift */,
+				FD58BA572658349C00BD9CE3 /* DataStore.swift */,
 				FD58BA5326582EB600BD9CE3 /* TokenRefresher.swift */,
 				FD58BA2F2658131800BD9CE3 /* EventsConfiguration.swift */,
 				FD58BA392658138700BD9CE3 /* EventService.swift */,
 				FD58BA4526581B6E00BD9CE3 /* EventNetwork.swift */,
+				FD7C16C92659340900A6BE0D /* EventLogger.swift */,
 				FD58BA332658135300BD9CE3 /* Models */,
 				FD58BA362658136500BD9CE3 /* Network */,
 				FD58B9EC26580E6500BD9CE3 /* Info.plist */,
@@ -264,13 +267,14 @@
 			files = (
 				FD58BA4A2658283C00BD9CE3 /* AccessToken.swift in Sources */,
 				FD58BA0726580EBF00BD9CE3 /* EventsInterface.swift in Sources */,
+				FD7C16CA2659340900A6BE0D /* EventLogger.swift in Sources */,
 				FD58BA302658131800BD9CE3 /* EventsConfiguration.swift in Sources */,
 				FD8BA1132658CD9D00C51685 /* EventsInteractor.swift in Sources */,
 				FD58BA2C265811D500BD9CE3 /* Event.swift in Sources */,
 				FD8BA1192658D52A00C51685 /* NetworkAdapter.swift in Sources */,
 				FD58BA3A2658138700BD9CE3 /* EventService.swift in Sources */,
 				FD58BA5426582EB600BD9CE3 /* TokenRefresher.swift in Sources */,
-				FD58BA582658349C00BD9CE3 /* TokenManager.swift in Sources */,
+				FD58BA582658349C00BD9CE3 /* DataStore.swift in Sources */,
 				FD58BA0B26580F1200BD9CE3 /* EventsError.swift in Sources */,
 				FD58BA4626581B6E00BD9CE3 /* EventNetwork.swift in Sources */,
 			);
