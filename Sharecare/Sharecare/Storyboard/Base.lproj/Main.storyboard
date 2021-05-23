@@ -71,6 +71,54 @@
             </objects>
             <point key="canvasLocation" x="-542.02898550724638" y="-17.410714285714285"/>
         </scene>
+        <!--Event Detail View Controller-->
+        <scene sceneID="LN8-u6-dtZ">
+            <objects>
+                <viewController storyboardIdentifier="EventDetailViewController" id="P9M-RQ-UVN" customClass="EventDetailViewController" customModule="Sharecare" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ypQ-mw-CDl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ezd-iZ-Qv4">
+                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="P9M-RQ-UVN" id="kQX-oz-Hum"/>
+                                    <outlet property="delegate" destination="P9M-RQ-UVN" id="Zic-A1-p4i"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dhb-Cj-9qR" customClass="BottomButton" customModule="Sharecare" customModuleProvider="target">
+                                <rect key="frame" x="16" y="818" width="382" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="pXH-gK-xCX"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="bottomButtonAction:" destination="P9M-RQ-UVN" eventType="touchUpInside" id="Oqf-a2-j8d"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HlH-eU-mAZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ezd-iZ-Qv4" firstAttribute="trailing" secondItem="HlH-eU-mAZ" secondAttribute="trailing" id="2Q4-m6-2vS"/>
+                            <constraint firstItem="Dhb-Cj-9qR" firstAttribute="bottom" secondItem="HlH-eU-mAZ" secondAttribute="bottom" id="CDK-qt-lHt"/>
+                            <constraint firstItem="HlH-eU-mAZ" firstAttribute="trailing" secondItem="Dhb-Cj-9qR" secondAttribute="trailing" constant="16" id="WMS-mN-duy"/>
+                            <constraint firstItem="Dhb-Cj-9qR" firstAttribute="top" secondItem="Ezd-iZ-Qv4" secondAttribute="bottom" id="Zdz-UU-hH3"/>
+                            <constraint firstItem="Dhb-Cj-9qR" firstAttribute="leading" secondItem="HlH-eU-mAZ" secondAttribute="leading" constant="16" id="e9v-GK-Oci"/>
+                            <constraint firstItem="Ezd-iZ-Qv4" firstAttribute="leading" secondItem="HlH-eU-mAZ" secondAttribute="leading" id="t1s-fx-d4O"/>
+                            <constraint firstItem="Ezd-iZ-Qv4" firstAttribute="top" secondItem="HlH-eU-mAZ" secondAttribute="top" id="xdc-ke-ZP5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomButton" destination="Dhb-Cj-9qR" id="73s-Ue-OGf"/>
+                        <outlet property="tableView" destination="Ezd-iZ-Qv4" id="ct3-eA-iSa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H70-Tk-ETF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="298.55072463768118" y="-17.410714285714285"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">

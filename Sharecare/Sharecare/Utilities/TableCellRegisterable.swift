@@ -31,15 +31,3 @@ extension TableCellAdaptable {
         return tableView.dequeueReusableCell(withIdentifier: reusableIdentifier, for: indexPath) as? Self
     }
 }
-
-//protocol XIBLoadable where Self: UIView {
-//    func loadViewFromNib() -> Self?
-//}
-//
-//extension XIBLoadable {
-//    func loadViewFromNib() -> Self? {
-//        let bundle = Bundle(for: Self.self)
-//        let nib = UINib(nibName: String(describing: Self.self), bundle: bundle)
-//        return nib.instantiate(withOwner: self, options: nil).first as? Self
-//    }
-//}

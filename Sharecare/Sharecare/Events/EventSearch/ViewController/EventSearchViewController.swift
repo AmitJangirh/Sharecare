@@ -50,13 +50,18 @@ extension EventSearchViewController: UITableViewDataSource, UITableViewDelegate 
         guard let cell = EventSearchResultCell.dequeueCell(for: tableView, indexPath: indexPath) else {
             return UITableViewCell()
         }
-        let result = EventSearchResult(eventName: cellData.title ?? "")
+        let result = EventSearchResult(eventName: cellData.title ?? "", isExpired: (cellData.timeToLive == 0))
         cell.configure(with: result)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cellData = viewModel[indexPath]
+        viewModel.navigateToEvenDetail(with: cellData)
     }
 }
 

@@ -10,21 +10,33 @@ import UIKit
 
 struct EventSearchResult {
     var eventName: String
+    var isExpired: Bool
 }
 
 class EventSearchResultCell: UITableViewCell, TableCellAdaptable {
+    // MARK: - DataType
+    typealias CellData = EventSearchResult
+    
+    struct Constant {
+        static let expiredText = "Expired"
+    }
+    
     // MARK: - IBOutlets
-    @IBOutlet private var name: UILabel! {
+    @IBOutlet private var nameLabel: UILabel! {
         didSet {
-            name.textColor = Theme.Color.greyColor
+            nameLabel.textColor = Theme.Color.greyColor
+        }
+    }
+    @IBOutlet private var expiredLabel: UILabel! {
+        didSet {
+            expiredLabel.textColor = Theme.Color.redColor
+            expiredLabel.text = Constant.expiredText
         }
     }
     
-    // MARK: - DataType
-    typealias CellData = EventSearchResult
-
     // MARK: - Configure
     func configure(with data: EventSearchResult) {
-        self.name.text = data.eventName
+        self.nameLabel.text = data.eventName
+        self.expiredLabel.isHidden = !data.isExpired
     }
 }

@@ -16,5 +16,8 @@ struct Theme {
         static var tintColor: UIColor {
             return UIColor.white
         }
+        static var redColor: UIColor {
+            return UIColor.red
+        }
     }
 }

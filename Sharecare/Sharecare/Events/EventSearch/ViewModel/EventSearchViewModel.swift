@@ -67,8 +67,8 @@ class EventSearchViewModel {
         }
     }
     var isLoading: Bool = false
-    var alertPresnter: AlertPresentable = AlertPresenter()
-
+    var alertPresenter: AlertPresentable = AlertPresenter()
+    
     // MARK: - Init
     init() {
         self.searchEvents = []
@@ -82,9 +82,18 @@ class EventSearchViewModel {
     func rows(at section: Int) -> Int {
         return searchEvents.count
     }
-   
+    
     subscript(indexPath: IndexPath) -> Event {
         return searchEvents[indexPath.row]
+    }
+    
+    func navigateToEvenDetail(with event: Event) {
+        guard let navViewControler = self.viewController?.navigationController else {
+            return
+        }
+        let eventDetailVC = EventDetailViewController.getVC()
+        eventDetailVC.viewModel.event = event
+        navViewControler.show(eventDetailVC, sender: nil)
     }
 }
 
@@ -92,18 +101,27 @@ extension EventSearchViewModel {
     // MARK: - API Interaction
     func search(string: String) {
         self.isLoading = true
-        eventsAPI.searchEvents(event: string) { (result: Result<[Event], EventsError>) in
-            self.isLoading = false
+        eventsAPI.searchEvents(event: string) { [weak self] (result: Result<[Event], EventsError>) in
+            guard let weakSelf = self else {
+                return
+            }
+            weakSelf.isLoading = false
             switch result {
             case .success(let searchEvents):
-                self.searchEvents = searchEvents
+                weakSelf.searchEvents = searchEvents
             case .failure(let eventsError):
-                DispatchQueue.main.async {
-                    if let viewCntrlr = self.viewController {
-                        self.alertPresnter.showAlert(alert: Alert(title: eventsError.title, message: eventsError.message), on: viewCntrlr)
-                    }
-                }
+                weakSelf.showAlert(title: eventsError.title, message: eventsError.message)
             }
+        }
+    }
+    
+    private func showAlert(title: String, message: String) {
+        guard let viewController = self.viewController else {
+            return
+        }
+        DispatchQueue.main.async {
+            self.alertPresenter.showAlert(alert: Alert(title: title, message: message),
+                                          on: viewController)
         }
     }
 }
