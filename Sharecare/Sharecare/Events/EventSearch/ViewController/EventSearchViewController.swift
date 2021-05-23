@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class EventSearchViewController: UIViewController {
+class EventSearchViewController: UIViewController, StoryboardGettable {
     // MARK: - IBOutlets
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var searchBar: UISearchBar!
@@ -30,9 +30,7 @@ class EventSearchViewController: UIViewController {
     
     // MARK: - Searching
     private func search(text: String) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.viewModel.search(string: text)
-        }
+        self.viewModel.search(string: text)
     }
 }
 

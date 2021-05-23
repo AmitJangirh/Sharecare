@@ -61,9 +61,7 @@ class EventSearchViewModel {
     var eventsAPI: EventsInterface = events
     var searchEvents: [Event] {
         didSet {
-            DispatchQueue.main.async {
-                self.tableView?.reloadData()
-            }
+            self.tableView?.reloadData()
         }
     }
     var isLoading: Bool = false
@@ -101,17 +99,22 @@ extension EventSearchViewModel {
     // MARK: - API Interaction
     func search(string: String) {
         self.isLoading = true
-        eventsAPI.searchEvents(event: string) { [weak self] (result: Result<[Event], EventsError>) in
-            guard let weakSelf = self else {
-                return
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.eventsAPI.searchEvents(event: string) { [weak self] (result: Result<[Event], EventsError>) in
+                DispatchQueue.main.async {
+                    self?.handleSearchResult(result: result)
+                }
             }
-            weakSelf.isLoading = false
-            switch result {
-            case .success(let searchEvents):
-                weakSelf.searchEvents = searchEvents
-            case .failure(let eventsError):
-                weakSelf.showAlert(title: eventsError.title, message: eventsError.message)
-            }
+        }
+    }
+    
+    private func handleSearchResult(result: Result<[Event], EventsError>) {
+        self .isLoading = false
+        switch result {
+        case .success(let searchEvents):
+            self.searchEvents = searchEvents
+        case .failure(let eventsError):
+            self.showAlert(title: eventsError.title, message: eventsError.message)
         }
     }
     
@@ -119,10 +122,8 @@ extension EventSearchViewModel {
         guard let viewController = self.viewController else {
             return
         }
-        DispatchQueue.main.async {
-            self.alertPresenter.showAlert(alert: Alert(title: title, message: message),
-                                          on: viewController)
-        }
+        self.alertPresenter.showAlert(alert: Alert(title: title, message: message),
+                                      on: viewController)
     }
 }
 

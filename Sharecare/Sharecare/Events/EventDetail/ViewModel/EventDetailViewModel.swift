@@ -12,9 +12,9 @@ import UIKit
 class EventDetailViewModel {
     // MARK: - UIComponent
     struct Constant {
-        static let joinSuccessTitle = "Was able to successfully join"
+        static let joinSuccessTitle = "Was able to successfully join event"
         static let unableToJoinTitle = "Was unable to join"
-        static let leaveSuccessTitle = "Was able to successfully join"
+        static let leaveSuccessTitle = "Was able to successfully leave event"
         static let unableToLeaveTitle = "Was unable to leave"
         static let rowHeight: CGFloat = 20
     }
@@ -74,11 +74,9 @@ class EventDetailViewModel {
         guard let viewController = self.viewController else {
             return
         }
-        DispatchQueue.main.async {
-            self.alertPresenter.showAlert(alert: Alert(title: title, message: message),
-                                          defaultActionHandler: completion,
-                                          on: viewController)
-        }
+        self.alertPresenter.showAlert(alert: Alert(title: title, message: message),
+                                      defaultActionHandler: completion,
+                                      on: viewController)
     }
     
     private func pop() {
@@ -109,61 +107,55 @@ class EventDetailViewModel {
     }
 }
 
-// MARK: - Join API Interaction
+// MARK: - API Interaction
 extension EventDetailViewModel {
     func joinEvent() {
         self.isLoading = true
-        eventsAPI.joinEvent(event: self.event) { [weak self] (result: Result<Bool, EventsError>) in
-            guard let weakSelf = self else {
-                return
-            }
-            weakSelf.isLoading = false
-            switch result {
-            case .success(let response):
-                weakSelf.handleJoinResponse(response: response)
-            case .failure(let eventsError):
-                weakSelf.showAlert(title: eventsError.title, message: eventsError.message)
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.eventsAPI.joinEvent(event: self.event) { [weak self] (result: Result<Bool, EventsError>) in
+                DispatchQueue.main.async {
+                    self?.handleResponse(response: result)
+                }
             }
         }
     }
     
-    private func handleJoinResponse(response: Bool) {
-        if response {
-            self.showAlert(title: Constant.joinSuccessTitle, message: "") {
-                self.pop()
-            }
-        } else {
-            self.showAlert(title: Constant.unableToJoinTitle, message: "")
-        }
-    }
-}
-
-// MARK: - Leave API Interaction
-extension EventDetailViewModel {
     func leaveEvent() {
         self.isLoading = true
-        eventsAPI.leaveEvent(event: self.event) { [weak self] (result: Result<Bool, EventsError>) in
-            guard let weakSelf = self else {
-                return
-            }
-            weakSelf.isLoading = false
-            switch result {
-            case .success(let response):
-                weakSelf.handleLeaveResponse(response: response)
-            case .failure(let eventsError):
-                weakSelf.showAlert(title: eventsError.title, message: eventsError.message)
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.eventsAPI.leaveEvent(event: self.event) { [weak self] (result: Result<Bool, EventsError>) in
+                DispatchQueue.main.async {
+                    self?.handleResponse(response: result)
+                }
             }
         }
     }
     
-    private func handleLeaveResponse(response: Bool) {
-        if response {
-            self.showAlert(title: Constant.leaveSuccessTitle, message: "") {
-                self.pop()
-            }
-        } else {
-            self.showAlert(title: Constant.unableToLeaveTitle, message: "")
+    private func handleResponse(response: Result<Bool, EventsError>) {
+        self.isLoading = false
+        switch response {
+        case .success(let response):
+            self.showAlert(response: response)
+        case .failure(let eventsError):
+            self.handleError(eventError: eventsError)
         }
+    }
+    
+    private func showAlert(response: Bool) {
+        guard let buttonState = bottomButton?.titleState else {
+            return
+        }
+        var title = response ? Constant.joinSuccessTitle : Constant.unableToJoinTitle
+        if buttonState == .leave {
+            title = response ? Constant.leaveSuccessTitle : Constant.unableToLeaveTitle
+        }
+        self.showAlert(title: title, message: "") {
+            self.pop()
+        }
+    }
+    
+    private func handleError(eventError: EventsError) {
+        self.showAlert(title: eventError.title, message: eventError.message)
     }
 }
 
