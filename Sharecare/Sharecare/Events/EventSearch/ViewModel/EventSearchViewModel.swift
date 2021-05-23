@@ -14,6 +14,7 @@ class EventSearchViewModel {
     struct Constant {
         static let rowHeight: CGFloat = 20
         static let SearchTitle = "Search Event"
+        static let searchDelay = 250
     }
     
     // MARK: - UIComponent
@@ -66,6 +67,8 @@ class EventSearchViewModel {
     }
     var isLoading: Bool = false
     var alertPresenter: AlertPresentable = AlertPresenter()
+    // We keep track of the pending work item as a property
+    private var pendingSearchWorkItem: DispatchWorkItem?
     
     // MARK: - Init
     init() {
@@ -102,12 +105,31 @@ class EventSearchViewModel {
 extension EventSearchViewModel {
     // MARK: - API Interaction
     func search(string: String) {
+        // Cancel the currently pending item
+        if let pendingItem = pendingSearchWorkItem {
+            pendingItem.cancel()
+            print("***** Previous Searching cancelled \(string)")
+        }
+        
+        // Wrap our API request in a work item
+        let requestWorkItem = DispatchWorkItem { [weak self] in
+            self?.hitSearchAPI(string: string)
+        }
+        
+        // Save the new work item and execute it after 250 ms
+        pendingSearchWorkItem = requestWorkItem
+        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + .milliseconds(Constant.searchDelay), execute: requestWorkItem)
+    }
+    
+    private func hitSearchAPI(string: String) {
+        guard string.count > 2 else {
+            return
+        }
+        print("***** New Search Started \(string)")
         self.isLoading = true
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.eventsAPI.searchEvents(event: string) { [weak self] (result: Result<[Event], EventsError>) in
-                DispatchQueue.main.async {
-                    self?.handleSearchResult(result: result)
-                }
+        self.eventsAPI.searchEvents(event: string) { [weak self] (result: Result<[Event], EventsError>) in
+            DispatchQueue.main.async {
+                self?.handleSearchResult(result: result)
             }
         }
     }

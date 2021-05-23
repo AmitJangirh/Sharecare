@@ -50,13 +50,33 @@ struct MockNetworkAdapter: NetworkAdaptable {
         self.requests.parameter = parameter
         self.requests.header = header
         
-        expectation.fulfill()
-        
         switch self.testCase! {
         case .success(let object):
             completion(.success(object as! T))
         case .failure(let error):
             completion(.failure(error))
         }
+        
+        // Fullfil at last
+        expectation.fulfill()
+    }
+    
+    static func getAPI(with service: EventService,
+                       parameter: [ParameterKey : String]?,
+                       header: [HeaderKey : String],
+                       completion: @escaping (Result<Data, EventsError>) -> Void) {
+        self.requests.service = service
+        self.requests.parameter = parameter
+        self.requests.header = header
+        
+        switch self.testCase! {
+        case .success:
+            completion(.success(Data()))
+        case .failure(let error):
+            completion(.failure(error))
+        }
+        
+        // Fullfil at last
+        expectation.fulfill()
     }
 }

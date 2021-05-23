@@ -11,8 +11,13 @@ import XCTest
 
 extension Event {
     static var events: [Event] {
-        return [Event(id: 119281, title: "Movie Night", createdAt: -1451, total: 7200, participants: 4),
-                Event(id: 2019285, title: "Cocoa Heads Meetup", createdAt: -10, total: 7200, participants: 67)]
+        return [event1, event2]
+    }
+    static var event1: Event {
+        Event(id: 119281, title: "Movie Night", createdAt: -1451, timeToLive: 7200, participants: 4)
+    }
+    static var event2: Event {
+        Event(id: 2019285, title: "Cocoa Heads Meetup", createdAt: -10, timeToLive: 7200, participants: 67)
     }
 }
 
@@ -25,5 +30,11 @@ extension Result {
             return eventError
         }
         return nil
+    }
+}
+
+extension EventService {
+    func isEqual(to: EventService) -> Bool {
+        return self.string == to.string
     }
 }
