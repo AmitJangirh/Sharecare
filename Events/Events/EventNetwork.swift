@@ -24,13 +24,27 @@ struct EventNetwork {
     
     static func joinEvent(eventId: String, token: String, completion: @escaping (Result<Bool, EventsError>) -> Void) {
         networkAdapter.getAPI(with: .join(eventId),
-                              header: [.authorization: token],
-                              completion: completion)
+                              parameter: nil,
+                              header: [.authorization: token]) { (result: Result<Data, EventsError>) in
+            switch result {
+            case .success:
+                completion(.success(true))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
     
     static func leaveEvent(eventId: String, token: String, completion: @escaping (Result<Bool, EventsError>) -> Void) {
         networkAdapter.getAPI(with: .leave(eventId),
-                              header: [.authorization: token],
-                              completion: completion)
+                              parameter: nil,
+                              header: [.authorization: token]) { (result: Result<Data, EventsError>) in
+            switch result {
+            case .success:
+                completion(.success(true))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }

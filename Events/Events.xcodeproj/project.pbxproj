@@ -106,12 +106,12 @@
 				FD58B9EB26580E6500BD9CE3 /* Events.h */,
 				FD58BA0626580EBF00BD9CE3 /* EventsInterface.swift */,
 				FD8BA1122658CD9D00C51685 /* EventsInteractor.swift */,
-				FD58BA572658349C00BD9CE3 /* DataStore.swift */,
 				FD58BA5326582EB600BD9CE3 /* TokenRefresher.swift */,
 				FD58BA2F2658131800BD9CE3 /* EventsConfiguration.swift */,
 				FD58BA392658138700BD9CE3 /* EventService.swift */,
 				FD58BA4526581B6E00BD9CE3 /* EventNetwork.swift */,
 				FD7C16C92659340900A6BE0D /* EventLogger.swift */,
+				FD9A6CAF265A774A001F7106 /* Storage */,
 				FD58BA332658135300BD9CE3 /* Models */,
 				FD58BA362658136500BD9CE3 /* Network */,
 				FD58B9EC26580E6500BD9CE3 /* Info.plist */,
@@ -154,6 +154,14 @@
 				FD58BA3E265815EE00BD9CE3 /* NetworkConnection.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FD9A6CAF265A774A001F7106 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				FD58BA572658349C00BD9CE3 /* DataStore.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -434,6 +442,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Events/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -459,6 +468,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Events/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

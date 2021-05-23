@@ -7,10 +7,14 @@
 
 import Foundation
 
+/// Data store class,
+/// Use is to set/get the value in User default
+/// We can update the store class to store value in Keychain or DB
 struct DataStore {
     let store = UserDefaults.standard
     
     enum StoreKey: String {
+        /// Access token key, which is stored in DB
         case accessToken = "EventAPI_AccessToken"
     }
     
@@ -48,7 +52,7 @@ extension DataStore {
         set {
             var dataStore = DataStore()
             if var updatedToken = newValue {
-                updatedToken.storeDate = Date() // Update the new token
+                updatedToken.storeDate = Date() // Update the new date of store
                 dataStore.saveValue(updatedToken, key: .accessToken)
             } else {
                 dataStore.removeValue(for: .accessToken)

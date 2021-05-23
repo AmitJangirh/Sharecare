@@ -17,6 +17,20 @@ class BottomButton: UIButton {
     enum State: String {
         case join = "Join"
         case leave = "Leave"
+        case disable = "Expired"
+        
+        var backgroundColor: UIColor {
+            switch self {
+            case .join, .leave: return Theme.Color.greyColor
+            case .disable: return Theme.Color.disableGreyColor
+            }
+        }
+        var textColor: UIColor {
+            switch self {
+            case .join, .leave: return Theme.Color.tintColor
+            case .disable: return Theme.Color.disableTintColor
+            }
+        }
     }
     
     // MARK: - Init
@@ -29,6 +43,9 @@ class BottomButton: UIButton {
     var titleState: State = .join {
         didSet {
             self.setTitle(titleState.rawValue, for: .normal)
+            self.backgroundColor = titleState.backgroundColor
+            self.tintColor = titleState.textColor
+            self.isUserInteractionEnabled = titleState == .disable ? false : true
         }
     }
     

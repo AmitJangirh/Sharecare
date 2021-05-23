@@ -44,12 +44,11 @@ extension EventSearchViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellData = viewModel[indexPath]
+        let cellData = viewModel[result: indexPath]
         guard let cell = EventSearchResultCell.dequeueCell(for: tableView, indexPath: indexPath) else {
             return UITableViewCell()
         }
-        let result = EventSearchResult(eventName: cellData.title ?? "", isExpired: (cellData.timeToLive == 0))
-        cell.configure(with: result)
+        cell.configure(with: cellData)
         return cell
     }
     
@@ -58,7 +57,7 @@ extension EventSearchViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cellData = viewModel[indexPath]
+        let cellData = viewModel[event: indexPath]
         viewModel.navigateToEvenDetail(with: cellData)
     }
 }
@@ -72,3 +71,5 @@ extension EventSearchViewController: UISearchBarDelegate {
         search(text: searchText)
     }
 }
+
+

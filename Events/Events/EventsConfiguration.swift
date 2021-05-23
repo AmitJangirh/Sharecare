@@ -45,7 +45,8 @@ extension EventsConfiguration {
         self.domain + "/" + self.version
     }
     
-    // Storing current configuration here
-    // Default set to production
+    /// Setting current configuration
+    /// This is be read from XCConfig or from a file
+    /// hard code default enviornment to production
     static var current = EventsConfiguration(enviornment: .production)
 }

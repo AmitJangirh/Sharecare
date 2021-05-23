@@ -15,6 +15,10 @@ protocol NetworkAdaptable {
                                    parameter: [ParameterKey: String]?,
                                    header: [HeaderKey: String],
                                    completion: @escaping (Result<T, EventsError>) -> Void)
+    static func getAPI(with service: EventService,
+                       parameter: [ParameterKey: String]?,
+                       header: [HeaderKey: String],
+                       completion: @escaping (Result<Data, EventsError>) -> Void)
 }
 
 extension NetworkAdaptable {
@@ -34,7 +38,8 @@ struct NetworkAdapter: NetworkAdaptable {
         let headers = NetworkHeaders.commonHeaders(header)
         NetworkConnection.shared.sendConnection(path: path,
                                                 method: .get,
-                                                headers: headers) { (responseObject: T?, urlResponse, networkError) in
+                                                headers: headers,
+                                                body: Optional<String>.none) { (responseObject: T?, urlResponse, networkError) in
             // Handle Network Error and convert it to EventsError
             if let error = networkError {
                 let eventError = EventsError.networkError(error)
@@ -52,11 +57,45 @@ struct NetworkAdapter: NetworkAdaptable {
             // Handle Data
             if let object = responseObject {
                 completion(.success(object))
+            } else {
+                // Handle nil data from API
+                completion(.failure(.invalidObject))
+            }
+        }
+    }
+    
+    static func getAPI(with service: EventService,
+                       parameter: [ParameterKey: String]? = nil,
+                       header: [HeaderKey: String],
+                       completion: @escaping (Result<Data, EventsError>) -> Void) {
+        guard var request = NetworkRequest(path: NetworkPath.path(with: service, paramters: parameter)) else {
+            completion(.failure(.invalidRequest))
+            return
+        }
+        request.setHeaders(NetworkHeaders.commonHeaders(header))
+        request.setHTTPMethod(method: .get)
+        // Hit API
+        NetworkConnection.shared.sendConnection(request: request) { (responseData, urlResponse, networkError) in
+            // Handle Network Error and convert it to EventsError
+            if let error = networkError {
+                let eventError = EventsError.networkError(error)
+                completion(.failure(eventError))
                 return
+            }
+            
+            // Handle HTTP response for status valid code
+            let statusCode = urlResponse?.code ?? 0
+            guard statusCode.isValidReponse else {
+                completion(.failure(EventsError.invalidStatusCode(statusCode)))
+                return
+            }
+            
+            // Handle Data
+            if let object = responseData {
+                completion(.success(object))
             } else {
                 // Handle nil data from API, since status code is 200, sending true
-                completion(.success(responseObject!))
-                return
+                completion(.success(Data()))
             }
         }
     }

@@ -81,8 +81,12 @@ class EventSearchViewModel {
         return searchEvents.count
     }
     
-    subscript(indexPath: IndexPath) -> Event {
+    subscript(event indexPath: IndexPath) -> Event {
         return searchEvents[indexPath.row]
+    }
+    
+    subscript(result indexPath: IndexPath) -> EventSearchResult {
+        return self[event: indexPath].cellData
     }
     
     func navigateToEvenDetail(with event: Event) {
@@ -133,5 +137,14 @@ extension EventsError {
     }
     var message: String {
         return "Network Error"
+    }
+}
+
+extension Event {
+    var cellData: EventSearchResult{
+        EventSearchResult(eventName: title ?? "", isExpired: isExpired)
+    }
+    var isExpired: Bool {
+        return timeToLive == 0
     }
 }

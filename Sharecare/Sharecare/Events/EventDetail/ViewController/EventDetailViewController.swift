@@ -33,6 +33,8 @@ class EventDetailViewController: UIViewController, StoryboardGettable {
         switch sender.titleState {
         case .join: viewModel.joinEvent()
         case .leave: viewModel.leaveEvent()
+        default: // DO nothing
+            print("button action nothing")
         }
     }
 }

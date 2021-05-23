@@ -34,20 +34,6 @@ public class NetworkConnection {
     ///   - path: NetworkPath, to be set the URL to URLRequest
     ///   - method: HTTP method type
     ///   - headers: HTTP headers values to be set to URLRequest
-    ///   - completion: Completion response from API, with Response decodable Object Type, and Network Error
-    public func sendConnection<T: Codable>(path: NetworkPath,
-                                           method: NetworkMethod,
-                                           headers: NetworkHeaders,
-                                           completion: @escaping (T?, URLResponse?, NetworkError? ) -> Void) {
-        sendConnection(path: path, method: method, headers: headers, body: Optional<String>.none, completion: completion)
-    }
-    
-    // MARK: - Sending function
-    /// Use it to send API request with given paramaters
-    /// - Parameters:
-    ///   - path: NetworkPath, to be set the URL to URLRequest
-    ///   - method: HTTP method type
-    ///   - headers: HTTP headers values to be set to URLRequest
     ///   - body: HTTP Body to be set to URLRequest, it is object which should adapt to Codable. Coding handled by function
     ///   - completion: Completion response from API, with Response decodable Object Type, and Network Error
     public func sendConnection<T: Codable, U: Codable>(path: NetworkPath,
@@ -98,6 +84,22 @@ public class NetworkConnection {
                 let err = NetworkError.failedJsonDecode(error)
                 completion(nil, response, err)
             }
+        }
+    }
+    
+    /// Use it to send API request with given paramaters if one don't want to decode an object from API, or expects zero data fromA API
+    /// - Parameters:
+    ///   - request: NetworkRequest object, where one can set headers, HTTP values and body
+    ///   - completion: Completion response from API, with Response decodable Object Type, and Network Error
+    public func sendConnection(request: NetworkRequest,
+                               completion: @escaping (Data?, URLResponse?, NetworkError? ) -> Void) {
+        //Send call
+        session.resumeDataTask(request: request.urlRequest) { (data, response, error) in
+            guard let responseData = data else {
+                completion(nil, response, .error(error!))
+                return
+            }
+            completion(responseData, response, nil)
         }
     }
 }

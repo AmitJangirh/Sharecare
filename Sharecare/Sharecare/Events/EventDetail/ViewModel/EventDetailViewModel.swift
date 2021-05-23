@@ -29,6 +29,7 @@ class EventDetailViewModel {
             viewController.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Theme.Color.tintColor]
             viewController.navigationController?.navigationBar.barTintColor = Theme.Color.greyColor
             viewController.navigationController?.navigationBar.tintColor = Theme.Color.tintColor
+            viewController.title = event.title
         }
     }
     weak var tableView: UITableView? {
@@ -48,7 +49,7 @@ class EventDetailViewModel {
             guard let bottomButton = self.bottomButton else {
                 return
             }
-            bottomButton.titleState = .join
+            bottomButton.titleState = event.isExpired ? .disable : .join
         }
     }
     
@@ -56,11 +57,7 @@ class EventDetailViewModel {
     var eventsAPI: EventsInterface = events
     var isLoading: Bool = false
     var alertPresenter: AlertPresentable = AlertPresenter()
-    var event: Event! {
-        didSet {
-            self.viewController?.title = event.title
-        }
-    }
+    var event: Event! 
     
     // MARK: - Init
     init() { } // Do nothing
