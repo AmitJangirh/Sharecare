@@ -26,7 +26,7 @@ class EventDetailViewControllerTests: XCTestCase {
     
     func test_tableView_sectionRowsCount_shouldBe1() {
         // Setup
-        initialSetup(with: Event.event1, testData: MockData())
+        initialSetup(with: Event.event1)
         // Test
         let sections = eventDetailVC.numberOfSections(in: tableView)
         let rows = eventDetailVC.tableView(tableView, numberOfRowsInSection: 0)
@@ -36,7 +36,7 @@ class EventDetailViewControllerTests: XCTestCase {
     
     func test_tableViewCell_cellData_shouldShowValidData() {
         // Setup
-        initialSetup(with: Event.event1, testData: MockData())
+        initialSetup(with: Event.event1)
         // Test first row
         let cell = createCell(at: IndexPath(row: 0, section: 0))
         let contentLabel = try! XCTUnwrap(cell.contentLabel)
@@ -61,11 +61,14 @@ class EventDetailViewControllerTests: XCTestCase {
     func test_buttonAction_join_success_shouldNavigateBack() {
         // Setup
         let expectation = self.expectation(description: "Wait for API Call")
-        initialSetup(with: Event.event1, testData: MockData(response: .success(true), expectation: expectation))
+        initialSetup(with: Event.event1, testData: MockDetailData(expectation: expectation,
+                                                                  response: true,
+                                                                  title: "Was able to successfully join event",
+                                                                  messgae: ""))
         // Action
         bottomButton.titleState = .join
         eventDetailVC.bottomButtonAction(bottomButton)
-        waitForExpectations(timeout: 1, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
         // Test
         XCTAssertEqual(mockAlertPresenter.alertData?.title, "Was able to successfully join event")
         XCTAssertEqual(mockNavigationVC.didPop, true)
@@ -74,7 +77,10 @@ class EventDetailViewControllerTests: XCTestCase {
     func test_buttonAction_join_failure_shouldNotNavigateBack() {
         // Setup
         let expectation = self.expectation(description: "Wait for API Call")
-        initialSetup(with: Event.event1, testData: MockData(response: .failure(EventsError.invalidAccessToken), expectation: expectation))
+        initialSetup(with: Event.event1, testData: MockDetailData(expectation: expectation,
+                                                                  response: false,
+                                                                  title: "Error",
+                                                                  messgae: ""))
         // Action
         bottomButton.titleState = .join
         eventDetailVC.bottomButtonAction(bottomButton)
@@ -87,7 +93,10 @@ class EventDetailViewControllerTests: XCTestCase {
     func test_buttonAction_leave_success_shouldNavigateBack() {
         // Setup
         let expectation = self.expectation(description: "Wait for API Call")
-        initialSetup(with: Event.event1, testData: MockData(response: .success(true), expectation: expectation))
+        initialSetup(with: Event.event1, testData: MockDetailData(expectation: expectation,
+                                                                  response: true,
+                                                                  title: "Was able to successfully leave event",
+                                                                  messgae: ""))
         // Action
         bottomButton.titleState = .leave
         eventDetailVC.bottomButtonAction(bottomButton)
@@ -100,12 +109,14 @@ class EventDetailViewControllerTests: XCTestCase {
 
 // MARK: - Utilites
 extension EventDetailViewControllerTests {
-    private func initialSetup(with event: Event, testData: MockData) {
+    private func initialSetup(with event: Event, testData: MockDetailData? = nil) {
         eventDetailVC = EventDetailViewController.getVC()
         mockNavigationVC = MockNavigationController(rootViewController: eventDetailVC)
         eventDetailVC.viewModel.event = event
         eventDetailVC.viewModel.alertPresenter = mockAlertPresenter
-        eventDetailVC.viewModel.eventsAPI = MockAPI(mockData: testData)
+        if let data = testData {
+            eventDetailVC.viewModel.eventDetailService = MockAPI(mockDetailData: data)
+        }
         eventDetailVC.loadViewIfNeeded()
         // mirror
         let mirrorVC = ViewControllerMirror(viewController: eventDetailVC)
