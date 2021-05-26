@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Events
 import UIKit
 
 class EventSearchViewController: UIViewController, StoryboardGettable {
@@ -13,8 +14,15 @@ class EventSearchViewController: UIViewController, StoryboardGettable {
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var searchBar: UISearchBar!
     
+    // MARK: - Constants
+    struct Constant {
+        static let rowHeight: CGFloat = 20
+        static let SearchTitle = "Search Event"
+    }
+    
     // MARK: - Vars
     let viewModel = EventSearchViewModel()
+    var alertPresenter: AlertPresentable = AlertPresenter()
 
     // MARK: - ViewLifeCycle
     override func viewDidLoad() {
@@ -23,14 +31,52 @@ class EventSearchViewController: UIViewController, StoryboardGettable {
     }
     
     private func setup() {
-        viewModel.viewController = self
-        viewModel.tableView = self.tableView
-        viewModel.searchBar = self.searchBar
+        viewModel.delegate = self
+        setupViewController()
+        setupTableView()
+        setupSearchBar()
+    }
+    
+    private func setupViewController() {
+        self.title = Constant.SearchTitle
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Theme.Color.tintColor]
+        self.navigationController?.navigationBar.barTintColor = Theme.Color.greyColor
+    }
+    
+    private func setupTableView() {
+        tableView.allowsMultipleSelection = false
+        tableView.estimatedRowHeight = Constant.rowHeight
+        tableView.rowHeight = Constant.rowHeight
+        tableView.tableFooterView = UIView()
+        EventSearchResultCell.register(for: tableView)
+    }
+    
+    private func setupSearchBar() {
+        searchBar.barTintColor = Theme.Color.greyColor
+        searchBar.tintColor = Theme.Color.tintColor
+        let searchTextField = searchBar.searchTextField
+        searchTextField.textColor = Theme.Color.greyColor
+        searchTextField.tintColor = Theme.Color.greyColor
+        searchTextField.clearButtonMode = .always
+        searchTextField.backgroundColor = Theme.Color.tintColor
+        if let glassIconView = searchTextField.leftView as? UIImageView {
+            glassIconView.image = glassIconView.image?.withRenderingMode(.alwaysTemplate)
+            glassIconView.tintColor = Theme.Color.greyColor
+        }
     }
     
     // MARK: - Searching
     private func search(text: String) {
         self.viewModel.search(string: text)
+    }
+    
+    private func navigateToEvenDetail(with event: Event) {
+        guard let navViewControler = self.navigationController else {
+            return
+        }
+        let eventDetailVC = EventDetailViewController.getVC()
+        eventDetailVC.viewModel.event = event
+        navViewControler.show(eventDetailVC, sender: nil)
     }
 }
 
@@ -58,18 +104,26 @@ extension EventSearchViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellData = viewModel[event: indexPath]
-        viewModel.navigateToEvenDetail(with: cellData)
+        self.navigateToEvenDetail(with: cellData)
     }
 }
 
 extension EventSearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard searchText.count > 2 else {
-            viewModel.searchEvents = []
-            return
-        }
         search(text: searchText)
     }
 }
 
+extension EventSearchViewController: EventSearchViewModelDelegate {
+    func shouldReloadData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    func showAlert(title: String, message: String) {
+        DispatchQueue.main.async {
+            self.alertPresenter.showAlert(alert: Alert(title: title, message: message), on: self)
+        }
+    }
+}
 

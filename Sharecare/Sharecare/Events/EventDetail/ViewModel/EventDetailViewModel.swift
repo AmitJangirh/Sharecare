@@ -9,57 +9,19 @@ import Foundation
 import Events
 import UIKit
 
+protocol EventDetailViewModelDelegate: class {
+    func showAlert(success: Bool, title: String, message: String)
+}
+
 class EventDetailViewModel {
-    // MARK: - Constants
-    struct Constant {
-        static let rowHeight: CGFloat = 20
-    }
-   
-    // MARK: - UIComponent
-    weak var viewController: UIViewController? {
-        didSet {
-            guard let viewController = self.viewController else {
-                return
-            }
-            viewController.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Theme.Color.tintColor]
-            viewController.navigationController?.navigationBar.barTintColor = Theme.Color.greyColor
-            viewController.navigationController?.navigationBar.tintColor = Theme.Color.tintColor
-            viewController.title = event.title
-        }
-    }
-    weak var tableView: UITableView? {
-        didSet {
-            guard let tableView = self.tableView else {
-                return
-            }
-            tableView.allowsMultipleSelection = false
-            tableView.estimatedRowHeight = Constant.rowHeight
-            tableView.rowHeight = Constant.rowHeight
-            tableView.tableFooterView = UIView()
-            EventDetailCell.register(for: tableView)
-        }
-    }
-    weak var bottomButton: BottomButton? {
-        didSet {
-            guard let bottomButton = self.bottomButton else {
-                return
-            }
-            bottomButton.titleState = event.isExpired ? .disable : .join
-        }
-    }
-    
     // MARK: - Vars
     var eventDetailService: EventDetailService?
     var isLoading: Bool = false
-    var alertPresenter: AlertPresentable = AlertPresenter()
-    var event: Event! 
+    var event: Event!
+    var delegate: EventDetailViewModelDelegate?
     
     // MARK: - Init
     init() { } // Do nothing
-    
-    private func pop() {
-        self.viewController?.navigationController?.popViewController(animated: true)
-    }
     
     // MARK: - Table getters
     func sections() -> Int {
@@ -97,36 +59,14 @@ extension EventDetailViewModel {
         hitService()
     }
     
-    func hitService() {
+    private func hitService() {
         self.isLoading = true
         DispatchQueue.global(qos: .userInitiated).async {
             self.eventDetailService?.hitService(completion: { [weak self] (success, title, message) in
-                self?.showAlert(success: success, title: title, message: message)
+                self?.isLoading = false
+                self?.delegate?.showAlert(success: success, title: title, message: message)
             })
         }
-    }
-    
-    private func showAlert(success: Bool, title: String, message: String) {
-        DispatchQueue.main.async {
-            self.isLoading = false
-            if success {
-                self.showAlert(title: title, message: "") {
-                    self.pop()
-                }
-            } else {
-                self.showAlert(title: title, message: "")
-            }
-        }
-    }
-    
-    // MARK: - Functions
-    private func showAlert(title: String, message: String, completion: (() -> Void)? = nil) {
-        guard let viewController = self.viewController else {
-            return
-        }
-        self.alertPresenter.showAlert(alert: Alert(title: title, message: message),
-                                      defaultActionHandler: completion,
-                                      on: viewController)
     }
 }
 
